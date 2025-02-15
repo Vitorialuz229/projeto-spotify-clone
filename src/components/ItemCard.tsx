@@ -28,7 +28,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
   
   return (
     <Link 
-    to={`${idPath}/${id}`}
+      to={`${idPath}/${id}`}
       state={{ id, image, banner, name, artist, description }}
       className={`group relative flex flex-col items-center p-4 rounded-lg transition duration-300 ${
         isDarkMode

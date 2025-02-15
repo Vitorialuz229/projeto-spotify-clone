@@ -11,18 +11,20 @@ const Header: React.FC = () => {
   return (
     <header
       className={`flex w-full justify-between items-center px-6 py-3 ${isDarkMode ? "text-white bg-black" : "text-black bg-white"}`}
-    >
+    > 
+    <a href="/">
       <img
-        src={isDarkMode ? LogoSpotifyDark : LogoSpotifyLight}
-        alt="Logo Spotify"
-        className="h-10"
-      />
-      <a
-        href="/"
+          src={isDarkMode ? LogoSpotifyDark : LogoSpotifyLight}
+          alt="Logo Spotify"
+          className="h-10"
+        />
+    </a>
+     
+      <p
         className={`cursor-pointer text-2xl transition-transform duration-200 hover:scale-105 ${isDarkMode ? "hover:text-gray-300" : "hover:text-gray-700"}`}
       >
         Spotify
-      </a>
+      </p>
       <div
         role="button"
         aria-label="Alternar tema"

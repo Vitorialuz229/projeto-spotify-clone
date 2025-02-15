@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import { useTheme } from "../context/ThemeContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface ItemListProps {
   items: Array<{
@@ -14,15 +14,13 @@ interface ItemListProps {
   }>;
   maxItemsToShow: number;
   path: string;
+  idPath: string;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ items, maxItemsToShow, path }) => {
-  const [showAll, setShowAll] = useState(false);
+const ItemList: React.FC<ItemListProps> = ({ items, maxItemsToShow, path, idPath }) => {
+  const [showAll] = useState(false);
   const { isDarkMode } = useTheme(); 
-
-  const handleShowAllClick = () => {
-    setShowAll(true);
-  };
+  const location = useLocation();
 
   return (
     <div
@@ -42,11 +40,10 @@ const ItemList: React.FC<ItemListProps> = ({ items, maxItemsToShow, path }) => {
          ))}
       </div>
 
-      {!showAll && (
+      {location.pathname !== idPath && (
         <div className="absolute top-5 right-6">
           <Link
-            to={path}
-            onClick={handleShowAllClick}
+            to={idPath}
             className={`font-bold text-sm hover:underline ${
               isDarkMode ? "text-gray-400" : "text-gray-900"
             }`}

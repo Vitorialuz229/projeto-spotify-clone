@@ -11,11 +11,13 @@ const Main: React.FC = () => {
         items={artistArray} 
         maxItemsToShow={6} 
         path="/artist"
+        idPath="/artists"
       />
       <SingleItem 
       items={songsArray} 
       maxItemsToShow={12}
       path="/song"
+      idPath="/songs"
       />
     </div>
   );

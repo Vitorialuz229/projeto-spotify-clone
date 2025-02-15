@@ -12,12 +12,14 @@ interface SingleItemProps {
   }>;
   maxItemsToShow: number;
   path: string;
+  idPath: string;
 }
 
 const SingleItem: React.FC<SingleItemProps> = ({
   items,
   maxItemsToShow,
-  path
+  path, 
+  idPath
 }) => {
   const [showAll, setShowAll] = useState(false);
   const { isDarkMode } = useTheme(); 
@@ -50,7 +52,7 @@ const SingleItem: React.FC<SingleItemProps> = ({
       {!showAll && (
         <div className="absolute top-5 right-6">
           <Link
-            to={path}
+            to={idPath}
             onClick={handleShowAllClick}
             className={`font-bold text-sm hover:underline ${
               isDarkMode ? "text-gray-400" : "text-gray-900"
