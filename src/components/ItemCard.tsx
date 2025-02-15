@@ -1,11 +1,13 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 interface ItemCardProps {
   id: number;
   image: string;
   name: string;
+  banner?: string;
   artist?: string;
   description?: string;
   isRoundImage?: boolean;
@@ -15,6 +17,7 @@ interface ItemCardProps {
 const ItemCard: React.FC<ItemCardProps> = ({
   id,
   image,
+  banner,
   name,
   artist,
   description,
@@ -23,7 +26,10 @@ const ItemCard: React.FC<ItemCardProps> = ({
 }) => {
   const { isDarkMode } = useTheme(); 
   return (
-    <a href={idPath} className={`group relative flex flex-col items-center p-4 rounded-lg transition duration-300 ${
+    <Link 
+      to={`/artist/${id}`}  
+      state={{ id, image, name, artist, description, banner }}
+      className={`group relative flex flex-col items-center p-4 rounded-lg transition duration-300 ${
         isDarkMode
           ? "hover:shadow-lg hover:bg-gradient-to-t hover:from-neutral-800 hover:via-neutral-800/10 hover:to-transparent"
           : "hover:shadow-lg hover:bg-gradient-to-t hover:from-neutral-300 hover:via-neutral-300/10 hover:to-transparent"
@@ -38,7 +44,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
       </div>
       <h2 className="text-base font-medium text-left hover:underline mt-2">{name}</h2>
       <p className="text-gray-400 text-sm text-left">{description || artist}</p>
-    </a>
+    </Link>
   );
 };
 

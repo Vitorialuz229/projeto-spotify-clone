@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import { useTheme } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 interface ItemListProps {
   items: Array<{
@@ -42,15 +43,15 @@ const ItemList: React.FC<ItemListProps> = ({ items, maxItemsToShow, path }) => {
 
       {!showAll && (
         <div className="absolute top-5 right-6">
-          <a
-            href="#"
+          <Link
+            to={path}
             onClick={handleShowAllClick}
             className={`font-bold text-sm hover:underline ${
               isDarkMode ? "text-gray-400" : "text-gray-900"
             }`}
           >
             Mostrar tudo
-          </a>
+          </Link>
         </div>
       )}
     </div>
