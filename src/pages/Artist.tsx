@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { FaCheckCircle, FaPlay } from "react-icons/fa";
+import ArtistSongs from "../components/ArtistSongs";
 
 const Artist: React.FC = () => {
   const { isDarkMode } = useTheme();
@@ -56,9 +57,12 @@ const Artist: React.FC = () => {
         </button>
       </div>
 
-      <div className="w-full flex gap-6 my-6 px-4">
+      <div className="w-full flex flex-col mt-6 px-4">
         <h2 className="text-2xl font-semibold text-white">Populares</h2>
-        {/* Lista de músicas */}
+
+        <div className="flex-1 mt-1 px-6">
+          <ArtistSongs artistName={artist.name} />
+        </div>
       </div>
     </div>
   );

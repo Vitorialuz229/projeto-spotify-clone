@@ -25,6 +25,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
   idPath
 }) => {
   const { isDarkMode } = useTheme(); 
+  
   return (
     <Link 
     to={`${idPath}/${id}`}
