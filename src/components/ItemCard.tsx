@@ -27,8 +27,8 @@ const ItemCard: React.FC<ItemCardProps> = ({
   const { isDarkMode } = useTheme(); 
   return (
     <Link 
-      to={`/artist/${id}`}  
-      state={{ id, image, name, artist, description, banner }}
+    to={`${idPath}/${id}`}
+      state={{ id, image, banner, name, artist, description }}
       className={`group relative flex flex-col items-center p-4 rounded-lg transition duration-300 ${
         isDarkMode
           ? "hover:shadow-lg hover:bg-gradient-to-t hover:from-neutral-800 hover:via-neutral-800/10 hover:to-transparent"

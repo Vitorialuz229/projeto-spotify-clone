@@ -7,6 +7,7 @@ interface ItemListProps {
   items: Array<{
     id: number;
     image: string;
+    banner?: string;
     name: string;
     description: string;
     isRoundImage?: boolean;
@@ -33,12 +34,12 @@ const ItemList: React.FC<ItemListProps> = ({ items, maxItemsToShow, path }) => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {items.slice(0, showAll ? items.length : maxItemsToShow).map((currObj) => (
-          <ItemCard
-            key={currObj.id}
-            {...currObj}
-            idPath={`${path}/${currObj.id}`}
-          />
-        ))}
+           <ItemCard
+           key={currObj.id}
+             {...currObj}
+             idPath={`${path}`}
+           />
+         ))}
       </div>
 
       {!showAll && (

@@ -42,7 +42,7 @@ const SingleItem: React.FC<SingleItemProps> = ({
           <ItemCard
           key={currObj.id}
             {...currObj}
-            idPath={`${path}/${currObj.id}`}
+            idPath={`${path}`}
           />
         ))}
       </div>
