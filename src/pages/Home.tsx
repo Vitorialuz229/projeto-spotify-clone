@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/header';
-import Main from './components/main';
+import Main from './Main';
 
 export function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -27,7 +27,7 @@ export function Home() {
   }, [isDarkMode]);
 
   return (
-    <div className={`flex flex-col h-screen ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
+    <div className={`flex flex-col min-h-screen ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <Main isDarkMode={isDarkMode} />
     </div>
