@@ -1,7 +1,16 @@
-import type { PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
+import Header from "../components/Header";
+import { useTheme } from "../context/ThemeContext";
 
-export default function Layout({ children }: PropsWithChildren) {
+const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+  const { isDarkMode } = useTheme();
+
   return (
-    <main className="bg-black">{children}</main>
-  )
+    <div className={`flex flex-col min-h-screen ${isDarkMode ? "bg-black" : "bg-white"}`}>
+      <Header />
+      <main className="flex-grow">{children}</main>
+    </div>
+  );
 };
+
+export default Layout;

@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
+import { useTheme } from "../context/ThemeContext";
 
 interface ItemListProps {
-  isDarkMode: boolean;
   items: Array<{
+    id: number;
     image: string;
     name: string;
     description: string;
     isRoundImage?: boolean;
   }>;
   maxItemsToShow: number;
+  path: string;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ isDarkMode, items, maxItemsToShow }) => {
-  const [showAll, setShowAll] = useState(false); 
+const ItemList: React.FC<ItemListProps> = ({ items, maxItemsToShow, path }) => {
+  const [showAll, setShowAll] = useState(false);
+  const { isDarkMode } = useTheme(); 
 
   const handleShowAllClick = () => {
     setShowAll(true);
@@ -28,11 +31,11 @@ const ItemList: React.FC<ItemListProps> = ({ isDarkMode, items, maxItemsToShow }
       <h1 className="text-xl font-bold hover:underline">Artistas Populares</h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        {items.slice(0, showAll ? items.length : maxItemsToShow).map((currObj, index) => (
+        {items.slice(0, showAll ? items.length : maxItemsToShow).map((currObj) => (
           <ItemCard
-            key={index}
+            key={currObj.id}
             {...currObj}
-            isDarkMode={isDarkMode}
+            idPath={`${path}/${currObj.id}`}
           />
         ))}
       </div>
