@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
+import React, { useEffect, useRef, useState } from "react";
 import { FaCheckCircle, FaPlay } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 import ArtistSongs from "../components/ArtistSongs";
+import { useTheme } from "../context/ThemeContext";
 
 const Artist: React.FC = () => {
   const { isDarkMode } = useTheme();
   const location = useLocation();
   const artist = location.state;
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(false);
   const playButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -27,6 +28,10 @@ const Artist: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleFollow = () => {
+    setIsFollowing(!isFollowing);
+  };
+
   if (!artist) {
     return (
       <h2 className="text-center text-red-500">Artista não encontrado!</h2>
@@ -43,7 +48,9 @@ const Artist: React.FC = () => {
       {isScrolled && (
         <div
           className={`fixed top-0 left-0 right-0 z-50 p-4 mx-3 flex items-center justify-between shadow-lg ${
-            isDarkMode ? "bg-neutral-900 text-white" : "bg-neutral-200 text-black"
+            isDarkMode
+              ? "bg-neutral-900 text-white"
+              : "bg-neutral-200 text-black"
           }`}
         >
           <div className="flex items-center gap-4">
@@ -68,7 +75,11 @@ const Artist: React.FC = () => {
         <div className="absolute gap-2 bottom-4 left-4 right-4 md:left-8 md:right-8 lg:left-16 lg:right-16 flex flex-col lg:justify-center">
           <div className="flex items-center space-x-2">
             <FaCheckCircle className="text-blue-500 text-lg md:text-xl lg:text-2xl" />
-            <p className={`text-sm md:text-base lg:text-lg ${isDarkMode ? "text-gray-300" : "text-gray-300"}`}>
+            <p
+              className={`text-sm md:text-base lg:text-lg ${
+                isDarkMode ? "text-gray-300" : "text-gray-300"
+              }`}
+            >
               Artista verificado
             </p>
           </div>
@@ -79,7 +90,11 @@ const Artist: React.FC = () => {
           >
             {artist.name}
           </h2>
-          <p className={`${isDarkMode ? "text-gray-300" : "text-gray-300"} text-sm md:text-base lg:text-lg`}>
+          <p
+            className={`${
+              isDarkMode ? "text-gray-300" : "text-gray-300"
+            } text-sm md:text-base lg:text-lg`}
+          >
             16.040.119 ouvintes mensais
           </p>
         </div>
@@ -95,16 +110,23 @@ const Artist: React.FC = () => {
             className={`${isDarkMode ? "text-black" : "text-white"}`}
           />
         </button>
-        <button 
+        <button
+          onClick={handleFollow}
           className={`bg-transparent font-bold px-7 rounded-3xl border-2 flex items-center justify-center shadow-lg hover:scale-110 transition-transform 
-            ${isDarkMode ? "border-white text-white" : "border-black text-black"}`}
+            ${
+              isDarkMode ? "border-white text-white" : "border-black text-black"
+            }`}
         >
-          Seguir
+          {isFollowing ? "Seguindo" : "Seguir"}
         </button>
       </div>
 
       <div className="w-full flex flex-col mt-6 px-4">
-        <h2 className={`text-2xl font-semibold ${isDarkMode ? "text-white" : "text-black"}`}>
+        <h2
+          className={`text-2xl font-semibold ${
+            isDarkMode ? "text-white" : "text-black"
+          }`}
+        >
           Populares
         </h2>
 

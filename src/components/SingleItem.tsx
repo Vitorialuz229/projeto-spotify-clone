@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ItemCard from "./ItemCard";
 import { useTheme } from "../context/ThemeContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface SingleItemProps {
   items: Array<{
@@ -23,6 +23,7 @@ const SingleItem: React.FC<SingleItemProps> = ({
 }) => {
   const [showAll, setShowAll] = useState(false);
   const { isDarkMode } = useTheme(); 
+    const location = useLocation();
 
   const handleShowAllClick = () => {
     setShowAll(true);
@@ -49,7 +50,7 @@ const SingleItem: React.FC<SingleItemProps> = ({
         ))}
       </div>
 
-      {!showAll && (
+      {location.pathname !== idPath && (
         <div className="absolute top-5 right-6">
           <Link
             to={idPath}
