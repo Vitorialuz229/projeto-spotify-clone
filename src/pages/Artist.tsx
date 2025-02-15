@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { FaCheckCircle, FaPlay } from "react-icons/fa";
@@ -8,6 +8,24 @@ const Artist: React.FC = () => {
   const { isDarkMode } = useTheme();
   const location = useLocation();
   const artist = location.state;
+  const [isScrolled, setIsScrolled] = useState(false);
+  const playButtonRef = useRef<HTMLButtonElement>(null); 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (playButtonRef.current) {
+        const playButtonPosition = playButtonRef.current.offsetTop; 
+        if (window.scrollY > playButtonPosition - 10) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   if (!artist) {
     return (
@@ -22,6 +40,24 @@ const Artist: React.FC = () => {
           isDarkMode ? "text-white bg-neutral-900" : "text-black bg-neutral-200"
         }`}
     >
+      {isScrolled && (
+        <div
+          className={`fixed top-0 left-0 right-0 z-50 p-4 mx-3 flex items-center justify-between ${
+            isDarkMode ? "bg-neutral-900" : "bg-neutral-200"
+          } shadow-lg`}
+        >
+          <div className="flex items-center gap-4">
+            <h2 className="text-xl font-extrabold">{artist.name}</h2>
+            <button className="bg-green-500 p-3 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+              <FaPlay
+                size={16}
+                className={`${isDarkMode ? "text-black" : "text-white"}`}
+              />
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="relative w-full group">
         <img
           src={artist.banner}
@@ -36,7 +72,7 @@ const Artist: React.FC = () => {
               Artista verificado
             </p>
           </div>
-          <h2 className="text-white text-3xl font-extrabold sm:text-4xl md:text-6xl lg:text-8xl break-words leading-none gap-4">
+          <h2 className={`text-white text-3xl font-extrabold sm:text-4xl md:text-6xl lg:text-8xl break-words leading-none gap-4 transition-all duration-300 ${isScrolled ? "text-2xl sm:text-3xl md:text-4xl lg:text-5xl" : ""}`}>
             {artist.name}
           </h2>
           <p className="text-gray-300 text-sm md:text-base lg:text-lg">
@@ -46,7 +82,10 @@ const Artist: React.FC = () => {
       </div>
 
       <div className="w-full flex gap-6 mt-4 px-4">
-        <button className="bg-green-500 px-5 py-5 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <button
+          ref={playButtonRef} 
+          className="bg-green-500 px-5 py-5 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+        >
           <FaPlay
             size={16}
             className={`${isDarkMode ? "text-black" : "text-white"}`}
