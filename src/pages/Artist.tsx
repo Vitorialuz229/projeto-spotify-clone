@@ -48,7 +48,7 @@ const Artist: React.FC = () => {
     >
       {isScrolled && (
         <div
-          className={`fixed top-0 left-0 right-0 z-50 p-4 mx-3 flex items-center justify-between shadow-lg ${
+          className={`fixed top-0 left-0 right-0 z-50 p-4 mx-3 md:mx-8 lg:mx-16 xl:mx-32 flex items-center justify-between shadow-lg ${
             isDarkMode
               ? "bg-neutral-900 text-white"
               : "bg-neutral-200 text-black"

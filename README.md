@@ -1,7 +1,6 @@
 # Spotify Clone
 
-Este projeto é um clone do Spotify desenvolvido com React e estilizado com **TailwindCSS**. O objetivo é recriar a interface do Spotify de forma responsiva e dinâmica, proporcionando uma experiência visual e interativa semelhante à plataforma original.
----
+ Este projeto é um clone do Spotify desenvolvido com React e estilizado com **TailwindCSS**. O objetivo é recriar a interface do Spotify de forma responsiva e dinâmica, proporcionando uma experiência visual e interativa semelhante à plataforma original.
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -13,25 +12,42 @@ Este projeto é um clone do Spotify desenvolvido com React e estilizado com **Ta
 
 ## 📌 Funcionalidades
 
-* 🎼 Interface inspirada no Spotify
+- 🎼 Interface inspirada no Spotify
 
-* 🎚️ Player de música funcional
+- 🎚️ Player de música funcional
 
-* 🎵 Listagem de músicas e artistas
+- 🎵 Listagem de músicas e artistas
 
-* 📱 Design responsivo
-  
+- 📱 Design responsivo
+
+- 🌙 Modo escuro e 🌞 modo Claro
+
 ---
 
 ## 📸 Demonstração
 
-(Adicione aqui prints ou GIFs do projeto em funcionamento)
+- Home
+  <img src=src\assets\Demonstração\Home.png>
+  <img src=src\assets\Demonstração\HomeBranco.png>
+
+- Mostrar todos os Artistas e Músicas
+  <img src=src\assets\Demonstração\MostrarTodos.png>
+  <img src=src\assets\Demonstração\MostrarTodosSigles.png>
+  <img src=src\assets\Demonstração\MostrarTodosSinglesBranco.png>
+  <img src=src\assets\Demonstração\BrancoMostrarTodosSingles.png>
+
+- Listagem das músicas do seu artista preferido
+  <img src=src\assets\Demonstração\listagem.png>
+  <img src=src\assets\Demonstração\Listagem2.png>
+
+- Dê o Play da sua música
+  <img src=/src/assets/Demonstração/Play.png>
 
 ---
 
 ## 📌 Melhorias Futuras
 
-* 🎤 Integração com APIs de letras de músicas
+- 🎤 Integração com APIs de letras de músicas
 
 ---
 
