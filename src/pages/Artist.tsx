@@ -8,6 +8,7 @@ const Artist: React.FC = () => {
   const { isDarkMode } = useTheme();
   const location = useLocation();
   const artist = location.state;
+  const song = location.state;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isFollowing, setIsFollowing] = useState(false);
   const playButtonRef = useRef<HTMLButtonElement>(null);

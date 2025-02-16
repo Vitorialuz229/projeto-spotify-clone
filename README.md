@@ -17,9 +17,7 @@ Este projeto é um clone do Spotify desenvolvido com React e estilizado com **Ta
 
 * 🎚️ Player de música funcional
 
-* 🎵 Listagem de playlists e álbuns
-
-* 🔍 Pesquisa de músicas
+* 🎵 Listagem de músicas e artistas
 
 * 📱 Design responsivo
   
@@ -33,11 +31,7 @@ Este projeto é um clone do Spotify desenvolvido com React e estilizado com **Ta
 
 ## 📌 Melhorias Futuras
 
-* 🔊 Controle de volume e reprodução
-
 * 🎤 Integração com APIs de letras de músicas
-
-* 💾 Implementação de autenticação de usuário
 
 ---
 

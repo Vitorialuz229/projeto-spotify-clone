@@ -31,9 +31,10 @@ const ArtistSongs: React.FC<{ artistName: string }> = ({ artistName }) => {
         ) : (
           <div className="space-y-6">
             {songs.slice(0, showAll ? songs.length : 5).map((song, index) => (
-              <Link
-                to={`/song/${song.id}`}
-                key={song.id}
+             <Link 
+                to={`/song/${song.id}`} 
+                state={song}
+                key={song.id} 
                 className="flex items-center space-x-4 group hover:bg-gray-200 dark:hover:bg-gray-800 transition-all p-2 rounded-lg relative"
               >
                 <div className="flex items-center justify-center w-8 h-8">
