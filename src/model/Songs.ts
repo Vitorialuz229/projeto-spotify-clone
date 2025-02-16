@@ -1,17 +1,17 @@
-export class Songs { 
+export class Songs {
   id: number;
-  image: string; 
-  name: string; 
-  duration: string; 
-  artist: string; 
-  audio: string; 
+  name: string;
+  artist: string;
+  image: string;
+  audio?: string;
+  duration?: string;
 
-  constructor(id: number, image: string, name: string, duration: string, artist: string, audio: string) {
+  constructor(id: number, name: string, audio: string, duration: string, artist: string, image: string ) { 
     this.id = id;
-    this.image = image;
     this.name = name;
-    this.duration = duration;
     this.artist = artist;
+    this.image = image;
     this.audio = audio;
+    this.duration = duration;
   }
 }

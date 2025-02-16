@@ -14,10 +14,10 @@ const Main: React.FC = () => {
         idPath="/artists"
       />
       <SingleItem 
-      items={songsArray} 
-      maxItemsToShow={12}
-      path="/song"
-      idPath="/songs"
+        items={songsArray} 
+        maxItemsToShow={12}
+        path="/song"
+        idPath="/songs"
       />
     </div>
   );
